@@ -6,6 +6,7 @@ public class MoveForward : MonoBehaviour
 
     void Update()
     {
+        // Move the animals on the vertical axis at the speed set by the float "speed"
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 }

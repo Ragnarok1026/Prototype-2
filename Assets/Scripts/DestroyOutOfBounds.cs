@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
@@ -7,13 +8,20 @@ public class DestroyOutOfBounds : MonoBehaviour
 
     void Update()
     {
+        // If an animal gets past the players veiw, Remove the animal
         if(transform.position.z > topBound)
         {
             Destroy(gameObject);
         }
         else if(transform.position.z < lowerBound)
         {
+            // if an animal gets past the players veiw, Game over screen apears
+            Debug.Log("Game Over! You Lose!");
+            SceneManager.LoadScene("GameOver");
             Destroy(gameObject);
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = false;
+
+
         }
     }
 }
